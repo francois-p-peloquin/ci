@@ -34,35 +34,9 @@ class Ajax extends CI_Controller {
 		}
 		
 		if ($type == 'quick') {
-			$this->load->model(array('partners','currency','countries','schools','certifications'));
-			$data['extras_check'] = $this->workshops->get_extras();
-			$data['currency'] = $this->currency->get_currency();
-			$data['countries'] = $this->countries->get_countries();
-			$data['states'] = $this->countries->get_states();
-			$data['general_cert_info'] = $this->certifications->general_cert_info();
-			$data['schools'] = $this->schools->get_schools();
-			$data['partners'] = $this->partners->get_partners();
-			$data['schedules'] = $this->workshops->get_schedules();
-			$data['language'] = $this->workshops->get_language();
-			$data['payment_options'] = $this->workshops->get_payment_options();
-			$data['live_states'] = $this->workshops->get_live_states();
-		} 
-		else if ($type == 'edit_cert') {
-			$this->load->model(array('certifications','modules','schools'));
-			$data['schools'] = $this->schools->get_schools();
-			$data['modules'] = $this->modules->mod_titles();
-		}
-		else if ($type == 'edit_user') {
-			$this->load->model(array('user'));
-			$data['permissions'] = $this->user->get_permissions();
-			$data['user_data'] = $this->session->userdata('logged_in'); //normally in model->page
-			$data['user'] = ucfirst($data['user_data']['username']); //normally in model->page
-			$data['permission'] = $data['user_data']['permission']; //normally in model->page
+			//SAMPLE pull type functoin
 		}
 		
-		if ($_SERVER['REMOTE_ADDR'] == '24.84.28.128' && $type == 'quick') {
-			$type = 'quick_2';
-		}
 		$this->load->view('quick_edit/'.$type,$data);
 	}
 	
